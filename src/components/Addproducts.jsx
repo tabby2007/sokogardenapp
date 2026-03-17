@@ -48,6 +48,13 @@ const Addproducts = () => {
       setProductDescription("");
       setProductCost("");
       setProductPhoto("");
+
+      //reset the page back to default
+      e.target.reset()
+
+      setTimeout(() => {
+        setSuccess("");
+      }, 5000);
     }
     catch(error){
       //set the loading hook to default
