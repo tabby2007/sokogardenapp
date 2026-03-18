@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Loader from './Loader';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Getproducts = () => {
 
@@ -9,6 +10,9 @@ const Getproducts = () => {
     const[products,setProducts]=useState([]);
     const[loading,setLoading]=useState(false);
     const[error,setError]=useState("");
+
+    //Declare the navigate hook
+    const navigate = useNavigate()
 
     //Below we specify the image based url
     const img_url = "https://kbenkamotho.alwaysdata.net/static/images/"
@@ -66,6 +70,8 @@ const Getproducts = () => {
               <p className="text-dark"> {product.product_description.slice(0,20)}..</p>
 
               <h4 className="text-danger">Kes {product.product_cost}</h4>
+
+              <button className='btn btn-outline-info' onClick={()=>navigate("/makepayment", {state:{product}})}>Purchase Now</button>
              </div>
            </div>
         </div>
